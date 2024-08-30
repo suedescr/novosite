@@ -38,3 +38,20 @@ def cadastro(request):
 
 def home(request):
     return render(request, 'usuarios/home.html')
+def lancar(request):
+    if request.user.is_authenticated:
+        return render(request, 'usuarios/home.html')
+    else:
+        return HttpResponse("Faça o Login para acessar!!")
+
+def alterar(request):
+    if request.user.is_authenticated:
+        return render(request, 'usuarios/alterar.html')
+    else:
+        return HttpResponse("Faça o Login para acessar!!")
+
+def visualizar(request):
+    if request.user.is_authenticated:
+        return render(request, 'visualizar/home.html')
+    else:
+        return HttpResponse("Faça o Login para acessar!!")
