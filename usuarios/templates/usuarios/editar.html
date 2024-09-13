@@ -1,0 +1,41 @@
+{% extends 'usuarios/base.html' %}
+
+{% block aba %}Editar Nota{% endblock %}
+{% block titulo %}Editar Nota{% endblock %}
+
+{% block conteudo %}
+<h3>Edição da Nota Selecionada</h3>
+<p>Verifique as informações cadastradas e faça as devidas edições.</p>
+<hr>
+
+<form action="{% url 'editar' lista_notas.pk %}" method="POST">
+    {% csrf_token %}
+    
+    <div class="form-group">
+        <label for="disciplina">Disciplina:</label>
+        <input type="text" class="form-control" id="disciplina" name="disciplina" value="{{ lista_notas.disciplina }}">
+    </div>
+    
+    <div class="form-group">
+        <label for="nota_atividades">Nota das Atividades:</label>
+        <input type="text" class="form-control" id="nota_atividades" name="nota_atividades" value="{{ lista_notas.nota_atividades }}">
+    </div>
+    
+    <div class="form-group">
+        <label for="nota_trabalho">Nota do Trabalho:</label>
+        <input type="text" class="form-control" id="nota_trabalho" name="nota_trabalho" value="{{ lista_notas.nota_trabalho }}">
+    </div>
+    
+    <div class="form-group">
+        <label for="nota_prova">Nota da Prova:</label>
+        <input type="text" class="form-control" id="nota_prova" name="nota_prova" value="{{ lista_notas.nota_prova }}">
+    </div>
+
+    <div class="update">
+        <button type="submit" class="btn btn-success btn-sm">Atualizar</button>
+        <a href="{% url 'alterar' %}" class="btn btn-danger btn-sm">Voltar</a>
+    </div>
+</form>
+
+<hr>
+{% endblock %}
